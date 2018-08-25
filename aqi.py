@@ -12,14 +12,14 @@ import pandas as pd
 class aqi(object):
     ''' 根据给定空气污染数据计算AQI
     '''
-    def __init__(self, data, columns=None, freq='1h', clean=False, o38=False, dropna=False, interp=False, style=False):
+    def __init__(self, data, columns=None, freq='1h', clean=True, o38=False, dropna=False, interp=False, style=False):
         ''' 初始化
 
         data (pandas.DataFrame) : 包含所有要素的数据
         columns (list) : 参与计算的要素
         freq  (str) : 控制计算每小时AQI还是日均AQI，可选值为: '1h', '24h'
-        clean (bool) :
-        o38  (bool) :  仅在 freq = '1h' 时有效
+        clean (bool) : 是否对数据进行预处理，默认进行预处理
+        o38  (bool) :  仅在 freq = '1h' 时有效，即是否对O3求8小时滑动平均，默认为False
         interp (bool) : 是否对缺失值进行插值，默认不插值
         style  (bool) : 返回AQI等级类型，数字还是字符，默认返回字符 
         '''
